@@ -14,7 +14,7 @@ Starter project untuk membangun API menggunakan **Express.js** dengan fitur aute
 ## **Clone repository**
 
 ```bash
-git clone https://github.com/mfauzi-dev/User-Authentication-API-v1
+git clone https://github.com/mfauzi-dev/user-authentication-api-v2.git
 ```
 
 ## **Setup Project Baru**
