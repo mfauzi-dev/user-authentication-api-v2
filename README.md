@@ -22,7 +22,7 @@ git clone https://github.com/mfauzi-dev/User-Authentication-API-v1
 1. **Rename folder sesuai project baru**
 
     ```bash
-    mv express-auth-api my-new-project
+    mv user-authentication-api-v2 my-new-project
     cd my-new-project
     ```
 
