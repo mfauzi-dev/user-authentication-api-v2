@@ -1,6 +1,6 @@
-# User Authentication API V1
+# User Authentication API V2
 
-Starter project untuk membangun API menggunakan **Express.js** dengan fitur autentikasi lengkap, siap digunakan untuk project baru tanpa perlu membangun auth dari nol dengan menggunakan JWT-based Authentication with HttpOnly Cookies.
+Starter project untuk membangun API menggunakan **Express.js** dengan fitur autentikasi lengkap, siap digunakan untuk project baru tanpa perlu membangun auth dari nol dengan menggunakan JWT-based Authentication with Refresh Token.
 
 ## Fitur Utama
 
