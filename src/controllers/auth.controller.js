@@ -11,6 +11,7 @@ import {
     registerValidation,
 } from "../validations/auth.validation.js";
 import { validated } from "../validations/validation.js";
+import jwt from "jsonwebtoken";
 
 export const register = async (req, res) => {
     try {
@@ -104,6 +105,51 @@ export const login = async (req, res) => {
             success: false,
             message: error.message,
             data: null,
+        });
+    }
+};
+
+export const refreshToken = async (req, res) => {
+    try {
+        const authHeader = req.headers["authorization"];
+        const token = authHeader && authHeader.split(" ")[1];
+
+        if (!token) {
+            return res.status(401).json({
+                success: false,
+                message: "Refresh token required",
+            });
+        }
+
+        const decoded = jwt.verify(token, process.env.JWT_REFRESH_SECRET);
+
+        const user = await User.findOne({
+            where: {
+                id: decoded.id,
+            },
+        });
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found",
+            });
+        }
+
+        const accessToken = generateAccessToken(user);
+        const refreshToken = generateRefreshToken(user);
+
+        return res.status(200).json({
+            success: true,
+            message: "Token refreshed",
+            accessToken,
+            refreshToken,
+        });
+    } catch (error) {
+        console.error("JWT verify error:", error);
+        return res.status(401).json({
+            success: false,
+            message: "Invalid or expired refresh token",
         });
     }
 };
