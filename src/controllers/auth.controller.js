@@ -146,7 +146,6 @@ export const refreshToken = async (req, res) => {
             refreshToken,
         });
     } catch (error) {
-        console.error("JWT verify error:", error);
         return res.status(401).json({
             success: false,
             message: "Invalid or expired refresh token",
